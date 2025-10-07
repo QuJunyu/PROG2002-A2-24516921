@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Details - CharityHub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">CharityHub</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Search Events</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="error-message" id="detailError">Failed to load event details. Please try again later.</div>
+
+    <!-- 详情页顶部大图 -->
+    <div class="event-hero">
+      <img 
+        src="images/event-detail-hero.jpg" 
+        alt="Event hero image" 
+        onerror="this.src='https://via.placeholder.com/1200x400?text=Event+Detail'; this.style.objectFit='contain';"
+      >
+      <div class="event-hero-content">
+        <span class="category" id="eventCategoryHero"></span>
+        <h1 id="eventTitleHero"></h1>
+        <div class="event-meta" id="eventMetaHero">
+          <!-- 动态填充：日期、时间、地点、机构 -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 详情页内容（补充purpose和注册表单，作业要求） -->
+    <div class="event-detail-content">
+      <div class="event-description card">
+        <h2>About This Event</h2>
+        <p id="eventDescription" class="loading">Loading event description...</p>
+        
+        <!-- 新增：事件目的（作业要求显示purpose） -->
+        <h2 style="margin-top: 2rem;">Event Purpose</h2>
+        <p id="eventPurpose" class="loading" style="background:#f8f5f0; padding:1rem; border-radius:8px;">Loading event purpose...</p>
+        
+        <h2 style="margin-top: 2rem;">Host Organization</h2>
+        <p id="orgMission" class="loading">Loading organization mission...</p>
+        <p><strong>Contact:</strong> <span id="orgContact" class="loading">Loading contact info...</span></p>
+      </div>
+
+      <div class="event-sidebar">
+        <!-- 筹款进度 -->
+        <div class="progress-section card">
+          <h3>Fundraiser Progress</h3>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="progress-text">
+            <span id="currentAmount">Loading...</span>
+            <span id="goalAmount">Loading...</span>
+          </div>
+          <div class="progress-text">
+            <span id="progressPercent">Loading...</span>
+          </div>
+        </div>
+
+        <!-- 新增：注册表单（作业要求包含registration form） -->
+        <div class="sidebar-card card">
+          <h3>Register for This Event</h3>
+          <p id="ticketPrice" class="loading">Loading ticket info...</p>
+          
+          <!-- 注册表单（静态结构，功能待A3开发） -->
+          <form id="registrationForm" style="margin-top:1rem; display:flex; flex-direction:column; gap:1rem;">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required disabled>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required disabled>
+            </div>
+            <div class="form-group">
+              <label for="ticketQty">Number of Tickets</label>
+              <input type="number" id="ticketQty" name="ticketQty" min="1" value="1" required disabled>
+            </div>
+            <!-- 注册按钮（触发模态框，作业要求） -->
+            <button type="button" class="register-btn" id="showRegisterModal" style="margin-top:0.5rem;">
+              <i class="fa-solid fa-user-plus"></i> Register Now
+            </button>
+            <p style="font-size:0.85rem; color:var(--text-light); margin-top:0.5rem;">
+              *Form fields are disabled - registration功能 under construction (A3开发)
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 注册模态框（作业要求提示语） -->
+  <div class="modal" id="registerModal">
+    <div class="modal-content">
+      <h3>Registration Feature Under Construction</h3>
+      <p>This feature is currently under construction.</p>
+      <p>Please check back closer to the event date for ticket registration and donation options.</p>
+      <button class="btn close-modal" id="closeModal">Got it</button>
+    </div>
+  </div>
+
+  <script src="js/event-detail.js"></script>
+</body>
+</html>
